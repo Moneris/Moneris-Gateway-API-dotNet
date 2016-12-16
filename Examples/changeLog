@@ -1,0 +1,43 @@
+Version 1.0.7:
+	- Added support for SetCryptType to PaypassCavv Transactions
+
+Version 1.0.6:
+	- Added support for Multi-Currency in Basic Transactions
+	- Fixed a bug with SetStatusCheck
+	
+Version 1.0.5
+	- Added support for SetWalletIndicator in Preauth and Purchase
+
+Version 1.0.4
+	- Added support for SetExpDate in Vault Cavv transactions
+	- Added additional examples for Convenience Fee transactions
+	- Added support for Convenience Fee in Cavv transactions
+	- Added example of SetWalletIndicator method in Cavv transactions
+	- Added examples of ResPreauth in US
+	- Added examples of Encrypted transactions
+
+Version 1.0.3
+	- Added Convenience Fee examples for Canada
+	- Added GetMpiEci method to obtain crypt type (ECI) value from Acs transaction
+	- Added setCryptType and setWalletIndicator method in Cavv transactions
+
+Version 1.0.2
+	- Added support for PayPass Txn
+	- Removed ability to send setCryptType in Cavv transactions
+
+Version 1.0.1
+	- Added ResCardVerificationCC
+	- Changed "SetData" in Vault Transactions to "SetDataKey" for proper
+	term
+	- Changed all SetExpdate to SetExpDate for consistency
+
+North American (NA) Version 1.0.0
+	- Basic Transactions
+	- Vault Transactions
+	- MPI Transactions
+	- Convenience Fee Transactions
+	- Track 2 Transactions
+	- Encrypted Transactions
+	- Risk Transactions
+	- MasterPass Transactions
+	- Visa Checkout Transactions
