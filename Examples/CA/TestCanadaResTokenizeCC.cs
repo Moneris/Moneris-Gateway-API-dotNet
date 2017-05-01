@@ -16,6 +16,7 @@ namespace Moneris
             string email = "bob@smith.com";
             string note = "my note";
             string cust_id = "customer1";
+			string data_key_format = "0";
             string processing_country_code = "CA";
             bool status_check = false;
 
@@ -32,6 +33,7 @@ namespace Moneris
             resTokenizeCC.SetEmail(email);
             resTokenizeCC.SetNote(note);
             resTokenizeCC.SetAvsInfo(avsCheck);
+            //resTokenizeCC.SetDataKeyFormat(data_key_format); //optional
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

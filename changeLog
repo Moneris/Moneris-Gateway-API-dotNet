@@ -1,3 +1,13 @@
+Version 1.0.10:
+	- Added support for ResForcePostCC transaction
+
+Version 1.0.9:
+	- Added Level23 Transactions
+	
+Version 1.0.8:
+	- Added support for data key format in Vault Transactions
+	- Added support for ship indicator for Pre-auth Completion transaction
+
 Version 1.0.7:
 	- Added support for SetCryptType to PaypassCavv Transactions
 

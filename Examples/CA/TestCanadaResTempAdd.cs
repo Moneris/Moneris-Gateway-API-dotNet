@@ -14,6 +14,7 @@ namespace Moneris
             string expdate = "1901"; //YYMM format
             string crypt_type = "7";
             string duration = "900";
+			string data_key_format = "0";
             string processing_country_code = "CA";
             bool status_check = false;
 
@@ -22,6 +23,7 @@ namespace Moneris
             resTempAdd.SetExpDate(expdate);
             resTempAdd.SetDuration(duration);
             resTempAdd.SetCryptType(crypt_type);
+            //resTempAdd.SetDataKeyFormat(data_key_format); //optional
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

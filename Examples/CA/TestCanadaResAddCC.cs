@@ -17,6 +17,7 @@ namespace Moneris
             string note = "my note";
             string cust_id = "customer1";
             string crypt_type = "7";
+			string data_key_format = "0";
             string processing_country_code = "CA";
             bool status_check = false;
 
@@ -35,7 +36,7 @@ namespace Moneris
             resaddcc.SetNote(note);
             resaddcc.SetAvsInfo(avsCheck);
             resaddcc.SetGetCardType("true");
-            //resaddcc.SetDataKeyFormat("0"); //1=F6L4 w/ Length preserve, 2=F6L4 w/o Length preserve
+            //resaddcc.SetDataKeyFormat(data_key_format); //optional
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

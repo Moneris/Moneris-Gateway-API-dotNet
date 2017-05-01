@@ -13,6 +13,7 @@ namespace Moneris
             string crypt = "7";
             string cust_id = "my customer id";
             string dynamic_descriptor = "my descriptor";
+            string ship_indicator = "F";
             string processing_country_code = "CA";
             bool status_check = false;
 
@@ -23,6 +24,7 @@ namespace Moneris
             completion.SetCryptType(crypt);
             completion.SetCustId(cust_id);
             completion.SetDynamicDescriptor(dynamic_descriptor);
+            //completion.SetShipIndicator(ship_indicator); //optional
 
 			//Optional - Set for Multi-Currency only
 			//setAmount must be 0.00 when using multi-currency

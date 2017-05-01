@@ -17,6 +17,7 @@ namespace Moneris
             string note = "my note";
             string cust_id = "customer1";
             string crypt_type = "7";
+			string data_key_format = "0";
             string processing_country_code = "CA";
             bool status_check = false;
 
@@ -33,6 +34,7 @@ namespace Moneris
             resAddToken.SetEmail(email);
             resAddToken.SetNote(note);
             resAddToken.SetAvsInfo(avsCheck);
+            //resAddToken.SetDataKeyFormat(data_key_format); //optional
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
