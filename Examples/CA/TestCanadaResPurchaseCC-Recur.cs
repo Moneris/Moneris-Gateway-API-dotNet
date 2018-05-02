@@ -41,6 +41,14 @@ namespace Moneris
 
             resPurchaseCC.SetRecur(recurring_cycle);
 
+			/********************* Credential on File *****************************************/
+			CofInfo cof = new CofInfo();
+			cof.SetPaymentIndicator("R");
+			cof.SetPaymentInformation("2");
+			cof.SetIssuerId("12345678901234");
+
+			resPurchaseCC.SetCofInfo(cof);
+
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -73,7 +81,9 @@ namespace Moneris
                 Console.WriteLine("RecurSuccess = " + receipt.GetRecurSuccess());
                 Console.WriteLine("ResSuccess = " + receipt.GetResSuccess());
                 Console.WriteLine("PaymentType = " + receipt.GetPaymentType());
-                Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                
+				Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
                 Console.WriteLine("Phone = " + receipt.GetResDataPhone());
                 Console.WriteLine("Email = " + receipt.GetResDataEmail());
                 Console.WriteLine("Note = " + receipt.GetResDataNote());

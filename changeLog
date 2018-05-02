@@ -1,3 +1,19 @@
+Version 1.0.14:
+	- Added ability to get raw response XML
+
+Version 1.0.13:
+	- Added support for Credential on File (CofInfo) for Basic and Vault
+	transactions
+
+Version 1.0.12:
+	- Added timeout of 35 seconds to get response
+	- Added support to sending recurring in CavvPurchase transaction
+	- Added support to obtain HostId from receipt
+
+Version 1.0.11:
+	- Added support for SetNetwork and SetDataType in CavvPurchase for Interac
+	E-commerce
+
 Version 1.0.10:
 	- Added support for ResForcePostCC transaction
 

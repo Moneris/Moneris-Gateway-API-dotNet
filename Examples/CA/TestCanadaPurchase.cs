@@ -20,14 +20,20 @@ namespace CanadaPurchaseConsoleTest
             string processing_country_code = "CA";
             bool status_check = false;
 
+			CofInfo cof = new CofInfo();
+			cof.SetPaymentIndicator("U");
+			cof.SetPaymentInformation("2");
+			cof.SetIssuerId("12345678901234");
+
             Purchase purchase = new Purchase();
             purchase.SetOrderId(order_id);
             purchase.SetAmount(amount);
             purchase.SetPan(pan);
-            purchase.SetExpDate("");
+            purchase.SetExpDate("2011");
             purchase.SetCryptType(crypt);
             purchase.SetDynamicDescriptor("2134565");
 			//purchase.SetWalletIndicator(""); //Refer to documentation for details
+			purchase.SetCofInfo(cof);
 			
 			//Optional - Set for Multi-Currency only
 			//setAmount must be 0.00 when using multi-currency
@@ -41,7 +47,6 @@ namespace CanadaPurchaseConsoleTest
             mpgReq.SetApiToken(api_token);
             mpgReq.SetTransaction(purchase);
             mpgReq.SetStatusCheck(status_check);
-			Console.WriteLine(mpgReq.toXML());
             mpgReq.Send();
 
             try
@@ -65,8 +70,10 @@ namespace CanadaPurchaseConsoleTest
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
+                Console.WriteLine("HostId = " + receipt.GetHostId());
                 Console.WriteLine("MCPAmount = " + receipt.GetMCPAmount());
                 Console.WriteLine("MCPCurrencyCode = " + receipt.GetMCPCurrencyCode());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)

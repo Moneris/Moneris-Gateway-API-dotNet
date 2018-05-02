@@ -28,6 +28,12 @@ namespace Moneris
             cvdCheck.SetCvdIndicator("1");
             cvdCheck.SetCvdValue("099");
 
+			/*************** Credential on File *************************************/
+			CofInfo cof = new CofInfo();
+			cof.SetPaymentIndicator("U");
+			cof.SetPaymentInformation("2");
+			cof.SetIssuerId("12345678901234");
+
             ResCardVerificationCC rescardverify = new ResCardVerificationCC();
 			rescardverify.SetDataKey(data_key);
 			rescardverify.SetOrderId(order_id);
@@ -36,6 +42,7 @@ namespace Moneris
 			rescardverify.SetCryptType(crypt);
             rescardverify.SetAvsInfo(avsCheck);
             rescardverify.SetCvdInfo(cvdCheck);
+			rescardverify.SetCofInfo(cof);
 			
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -67,6 +74,8 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+				Console.ReadLine();
             }
             catch (Exception e)
             {

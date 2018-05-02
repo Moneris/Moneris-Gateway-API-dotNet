@@ -26,6 +26,11 @@ namespace Moneris
             avsCheck.SetAvsStreetName("Payton Street");
             avsCheck.SetAvsZipCode("M1M1M1");
 
+			CofInfo cof = new CofInfo();
+			cof.SetPaymentIndicator("U");
+			cof.SetPaymentInformation("2");
+			cof.SetIssuerId("12345678901234");
+
             ResAddCC resaddcc = new ResAddCC();
             resaddcc.SetPan(pan);
             resaddcc.SetExpDate(expdate);
@@ -37,6 +42,7 @@ namespace Moneris
             resaddcc.SetAvsInfo(avsCheck);
             resaddcc.SetGetCardType("true");
             //resaddcc.SetDataKeyFormat(data_key_format); //optional
+			resaddcc.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -70,6 +76,7 @@ namespace Moneris
                 Console.WriteLine("Avs Street Number = " + receipt.GetResDataAvsStreetNumber());
                 Console.WriteLine("Avs Street Name = " + receipt.GetResDataAvsStreetName());
                 Console.WriteLine("Avs Zipcode = " + receipt.GetResDataAvsZipcode());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)
