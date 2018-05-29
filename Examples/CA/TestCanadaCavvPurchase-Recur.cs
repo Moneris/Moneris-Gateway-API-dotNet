@@ -47,11 +47,6 @@ namespace Moneris
             recur_hash.Add("recur_amount", recur_amount);
 
             Recur recurring_cycle2 = new Recur(recur_hash);
-
-			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("R");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("12345678901234");
             
 			CavvPurchase cavvPurchase = new CavvPurchase();
             cavvPurchase.SetOrderId(order_id);
@@ -67,7 +62,6 @@ namespace Moneris
 			//cavvPurchase.SetWalletIndicator(wallet_indicator); //set only wallet transactions e.g. APPLE PAY
 			
 			cavvPurchase.SetRecur(recurring_cycle);
-			cavvPurchase.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest(); 
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -99,7 +93,6 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
-                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)

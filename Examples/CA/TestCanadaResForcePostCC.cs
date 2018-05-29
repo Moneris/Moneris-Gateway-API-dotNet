@@ -20,11 +20,6 @@ namespace Moneris
             string processing_country_code = "CA";
             bool status_check = false;
 
-			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("U");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("12345678901234");
-
             ResForcePostCC resForcePostCC = new ResForcePostCC();
             resForcePostCC.SetDataKey(data_key);
             resForcePostCC.SetOrderId(order_id);
@@ -33,7 +28,6 @@ namespace Moneris
 			resForcePostCC.SetAuthCode(auth_code);
             resForcePostCC.SetCryptType(crypt_type);
             resForcePostCC.SetDynamicDescriptor(descriptor);
-			resForcePostCC.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -65,9 +59,7 @@ namespace Moneris
                 Console.WriteLine("ResSuccess = " + receipt.GetResSuccess());
                 Console.WriteLine("PaymentType = " + receipt.GetPaymentType());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
-                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
-                
-				Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
+                Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
                 Console.WriteLine("Phone = " + receipt.GetResDataPhone());
                 Console.WriteLine("Email = " + receipt.GetResDataEmail());
                 Console.WriteLine("Note = " + receipt.GetResDataNote());

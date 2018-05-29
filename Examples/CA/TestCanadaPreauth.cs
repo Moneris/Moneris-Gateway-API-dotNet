@@ -20,11 +20,6 @@ namespace CanadaPurchaseConsoleTest
             string processing_country_code = "CA";
             bool status_check = false;
 
-			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("U");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("12345678901234");
-
             PreAuth preauth = new PreAuth();
             preauth.SetOrderId(order_id);
             preauth.SetAmount(amount);
@@ -32,7 +27,6 @@ namespace CanadaPurchaseConsoleTest
             preauth.SetExpDate(expdate);
             preauth.SetCryptType(crypt);
 			//preauth.SetWalletIndicator(""); //Refer to documentation for details
-			preauth.SetCofInfo(cof);
 
 			//Optional - Set for Multi-Currency only
 			//setAmount must be 0.00 when using multi-currency
@@ -73,7 +67,6 @@ namespace CanadaPurchaseConsoleTest
                 //Console.WriteLine("StatusMessage = " + receipt.GetStatusMessage());
                 Console.WriteLine("MCPAmount = " + receipt.GetMCPAmount());
                 Console.WriteLine("MCPCurrencyCode = " + receipt.GetMCPCurrencyCode());
-                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)

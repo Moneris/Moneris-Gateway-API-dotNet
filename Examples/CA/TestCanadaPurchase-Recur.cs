@@ -52,13 +52,6 @@ namespace Moneris
 
             purchase.SetRecur(recurring_cycle);
 
-			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("R");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("12345678901234");
-
-			purchase.SetCofInfo(cof);
-
             /**************************** Https Post Request ***************************/
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
@@ -94,7 +87,6 @@ namespace Moneris
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("Recur Success = " + receipt.GetRecurSuccess());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
-                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)

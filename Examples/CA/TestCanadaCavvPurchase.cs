@@ -21,11 +21,6 @@ namespace Moneris
 			string crypt_type = "5";
             bool status_check = false;
 
-			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("U");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("12345678901234");
-
             CavvPurchase cavvPurchase = new CavvPurchase();
             cavvPurchase.SetOrderId(order_id);
             cavvPurchase.SetCustId(cust_id);
@@ -38,7 +33,6 @@ namespace Moneris
 			//cavvPurchase.SetNetwork("Interac");  //set only for Interac e-commerce
 			//cavvPurchase.SetDataType("3DSecure"); //set only for Interac e-commerce
 			//cavvPurchase.SetWalletIndicator(wallet_indicator); //set only wallet transactions e.g. APPLE PAY
-			cavvPurchase.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest(); 
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -70,7 +64,6 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
-                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)

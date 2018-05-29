@@ -19,11 +19,6 @@ namespace Moneris
             string processing_country_code = "CA";
             bool status_check = false;
 
-			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("U");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("12345678901234");
-
             ForcePost forcepost = new ForcePost();
             forcepost.SetOrderId(order_id);
             forcepost.SetCustId(cust_id);
@@ -33,7 +28,6 @@ namespace Moneris
             forcepost.SetAuthCode(auth_code);
             forcepost.SetCryptType(crypt);
             forcepost.SetDynamicDescriptor(dynamic_descriptor);
-			forcepost.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -65,7 +59,6 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("CorporateCard = " + receipt.GetCorporateCard());
-                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 //Console.WriteLine("MessageId = " + receipt.GetMessageId());
                 Console.ReadLine();
             }
