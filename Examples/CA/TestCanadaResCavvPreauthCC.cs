@@ -19,6 +19,11 @@ namespace Moneris
 			string processing_country_code = "CA";
             bool status_check = false;
 
+			CofInfo cof = new CofInfo();
+			cof.SetPaymentIndicator("U");
+			cof.SetPaymentInformation("2");
+			cof.SetIssuerId("168451306048014");
+
             ResCavvPreauthCC resCavvPreauthCC = new ResCavvPreauthCC();
             resCavvPreauthCC.SetOrderId(order_id);
             resCavvPreauthCC.SetDataKey(data_key);
@@ -26,6 +31,7 @@ namespace Moneris
             resCavvPreauthCC.SetAmount(amount);
             resCavvPreauthCC.SetCavv(cavv);
 			//resCavvPreauthCC.SetExpDate(expdate); //mandatory for temp token only
+			resCavvPreauthCC.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -57,6 +63,7 @@ namespace Moneris
                 Console.WriteLine("ResSuccess = " + receipt.GetResSuccess());
                 Console.WriteLine("PaymentType = " + receipt.GetPaymentType());
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
 
                 //ResolveData
                 Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());

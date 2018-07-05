@@ -25,6 +25,9 @@ namespace Moneris
             avsCheck.SetAvsStreetName("Payton Street");
             avsCheck.SetAvsZipCode("M1M1M1");
 
+			CofInfo cof = new CofInfo();
+			cof.SetIssuerId("168451306048014");
+
             ResTokenizeCC resTokenizeCC = new ResTokenizeCC();
             resTokenizeCC.SetOrderId(order_id);
             resTokenizeCC.SetTxnNumber(txn_number);
@@ -33,6 +36,7 @@ namespace Moneris
             resTokenizeCC.SetEmail(email);
             resTokenizeCC.SetNote(note);
             resTokenizeCC.SetAvsInfo(avsCheck);
+			resTokenizeCC.SetCofInfo(cof);
             //resTokenizeCC.SetDataKeyFormat(data_key_format); //optional
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();

@@ -59,7 +59,9 @@ namespace Moneris
                 Console.WriteLine("ResSuccess = " + receipt.GetResSuccess());
                 Console.WriteLine("PaymentType = " + receipt.GetPaymentType());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
-                Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                
+				Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
                 Console.WriteLine("Phone = " + receipt.GetResDataPhone());
                 Console.WriteLine("Email = " + receipt.GetResDataEmail());
                 Console.WriteLine("Note = " + receipt.GetResDataNote());

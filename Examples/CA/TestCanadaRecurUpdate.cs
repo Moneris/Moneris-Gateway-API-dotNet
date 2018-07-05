@@ -18,6 +18,9 @@ namespace Moneris
             //string terminate = "";
             string processing_country_code = "CA";
             bool status_check = false;
+			
+			CofInfo cof = new CofInfo();
+			cof.SetIssuerId("139X3130ASCXAS9");
 
             RecurUpdate recurUpdate = new RecurUpdate();
             recurUpdate.SetOrderId(order_id);
@@ -29,6 +32,7 @@ namespace Moneris
             //recurUpdate.SetTotalNumRecurs(total_num);
             //recurUpdate.SetHold(hold);
             //recurUpdate.SetTerminate(terminate);
+			recurUpdate.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

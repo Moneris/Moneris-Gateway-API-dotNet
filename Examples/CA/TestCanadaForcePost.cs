@@ -59,6 +59,7 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("CorporateCard = " + receipt.GetCorporateCard());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 //Console.WriteLine("MessageId = " + receipt.GetMessageId());
                 Console.ReadLine();
             }

@@ -21,6 +21,11 @@ namespace Moneris
 			string crypt_type = "5";
             bool status_check = false;
 
+			CofInfo cof = new CofInfo();
+			cof.SetPaymentIndicator("U");
+			cof.SetPaymentInformation("2");
+			cof.SetIssuerId("168451306048014");
+
             CavvPreAuth cavvPreauth = new CavvPreAuth();
             cavvPreauth.SetOrderId(order_id);
             cavvPreauth.SetCustId(cust_id);
@@ -31,7 +36,8 @@ namespace Moneris
 			cavvPreauth.SetCryptType(crypt_type); //Mandatory for AMEX cards only
             cavvPreauth.SetDynamicDescriptor(dynamic_descriptor);
 			//cavvPreauth.SetWalletIndicator(wallet_indicator); //set only wallet transactions e.g. APPLE PAY
-
+			cavvPreauth.SetCofInfo(cof);
+			
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -62,6 +68,7 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
+                Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)
