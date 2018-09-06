@@ -1,9 +1,12 @@
+Version 1.0.16:
+	- Removed methods that had same name but different case from Receipt, ResAddToken AttributeQuery, RecurUpdate and Track2IndependentRefund
+	- Added support for SetMarketIndicator for Preauth and Purchase
+	- Added support for SetCmId for Preauth, Purchase, CavvPreauth and CavvPurchase
+
 Version 1.0.15:
-	- Added support for Credential on File (CofInfo) for RecurUpdate
-	transaction
+	- Added support for Credential on File (CofInfo) for RecurUpdate transaction
 	- Updated ResAddCC, ResUpdateCC, ResAddToken, ResTokenizeCC examples
-	- Removed support for Credential on File (CofInfo) from ForcePost
-	transactions
+	- Removed support for Credential on File (CofInfo) from ForcePost transactions
 
 Version 1.0.14:
 	- Added ability to get raw response XML
