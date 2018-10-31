@@ -1,3 +1,6 @@
+Version 1.0.17:
+	- Added support for anc1 in ResTempAdd
+
 Version 1.0.16:
 	- Removed methods that had same name but different case from Receipt, ResAddToken AttributeQuery, RecurUpdate and Track2IndependentRefund
 	- Added support for SetMarketIndicator for Preauth and Purchase
