@@ -9,9 +9,9 @@ namespace Moneris
         public static void Main(string[] args)
         {
             string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
-            string store_id = "store1";
+            string store_id = "store5";
             string api_token = "yesguy";
-            string data_key = "YeMnLZ8i2p02gbwSB8i8Q02Fo";
+            string data_key = "rS7DbroQHJmJxdBfXFXiauQc4";
             string amount = "1.00";
             string cust_id = "customer1"; //if sent will be submitted, otherwise cust_id from profile will be used
             string crypt_type = "1";

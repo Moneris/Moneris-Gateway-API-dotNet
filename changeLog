@@ -1,3 +1,14 @@
+Version 1.0.20:
+	- Added support for MCP transactions
+	- Added support for GooglePayPurchase and GooglePayPreauth
+	- Added support for ApplePayTokenPurchase and ApplePayTokenPreauth
+
+Version 1.0.19:
+	- Removed support for Multi-currency in Basic Transactions
+
+Version 1.0.18:
+	- Added support for SetMarketIndicator in ResPreauthCC and ResPurchaseCC
+
 Version 1.0.17:
 	- Added support for anc1 in ResTempAdd
 
