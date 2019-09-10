@@ -26,11 +26,6 @@ namespace Moneris
             completion.SetDynamicDescriptor(dynamic_descriptor);
             //completion.SetShipIndicator(ship_indicator); //optional
 
-			//Optional - Set for Multi-Currency only
-			//setAmount must be 0.00 when using multi-currency
-			//completion.SetMCPAmount("300"); //penny value amount 1.25 = 125
-			//completion.SetMCPCurrencyCode("840"); //ISO-4217 country currency number
-
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -61,8 +56,6 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
-                Console.WriteLine("MCPAmount = " + receipt.GetMCPAmount());
-                Console.WriteLine("MCPCurrencyCode = " + receipt.GetMCPCurrencyCode());
                 Console.ReadLine();
             }
             catch (Exception e)

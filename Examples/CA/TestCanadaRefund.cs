@@ -24,11 +24,6 @@ namespace Moneris
             refund.SetCustId(custid);
             refund.SetDynamicDescriptor(dynamic_descriptor);
 
-			//Optional - Set for Multi-Currency only
-			//setAmount must be 0.00 when using multi-currency
-			//refund.SetMCPAmount("200"); //penny value amount 1.25 = 125
-			//refund.SetMCPCurrencyCode("840"); //ISO-4217 country currency number
-
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -58,8 +53,6 @@ namespace Moneris
                 Console.WriteLine("TransTime = " + receipt.GetTransTime());
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
-                Console.WriteLine("MCPAmount = " + receipt.GetMCPAmount());
-                Console.WriteLine("MCPCurrencyCode = " + receipt.GetMCPCurrencyCode());
                 Console.ReadLine();
             }
             catch (Exception e)

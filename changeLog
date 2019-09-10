@@ -1,3 +1,7 @@
+Version 1.0.21:
+	- Added Kount transaction examples
+	- Fixed request XML encoding
+
 Version 1.0.20:
 	- Added support for MCP transactions
 	- Added support for GooglePayPurchase and GooglePayPreauth
