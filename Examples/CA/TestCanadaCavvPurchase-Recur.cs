@@ -62,6 +62,8 @@ namespace Moneris
             cavvPurchase.SetCavv(cavv);
 			cavvPurchase.SetCryptType(crypt_type); //Mandatory for AMEX cards only
             cavvPurchase.SetDynamicDescriptor(dynamic_descriptor);
+			cavvPurchase.SetThreeDSVersion("2"); //Mandatory for 3DS Version 2.0+
+			cavvPurchase.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
 			//cavvPurchase.SetNetwork("Interac");  //set only for Interac e-commerce
 			//cavvPurchase.SetDataType("3DSecure"); //set only for Interac e-commerce
 			//cavvPurchase.SetWalletIndicator(wallet_indicator); //set only wallet transactions e.g. APPLE PAY
@@ -100,6 +102,7 @@ namespace Moneris
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+				Console.WriteLine("ThreeDSVersion = " + receipt.GetThreeDSVersion());
                 Console.ReadLine();
             }
             catch (Exception e)

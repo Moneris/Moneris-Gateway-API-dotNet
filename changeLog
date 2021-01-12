@@ -1,3 +1,14 @@
+Version 1.0.24:
+	- Added support for 3DS 2.0 transactions
+	- Added support for 3DS 2.0 methods in Cavv transactions
+
+Version 1.0.23:
+	- Added support for dynamic descriptor in ApplePay and GooglePay transactions
+	- Added support for OCTPayment transaction
+
+Version 1.0.22:
+	- Added support for SetAmount in ApplePay transactions
+
 Version 1.0.21:
 	- Added Kount transaction examples
 	- Fixed request XML encoding

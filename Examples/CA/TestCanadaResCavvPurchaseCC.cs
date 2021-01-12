@@ -31,6 +31,8 @@ namespace Moneris
             resCavvPurchaseCC.SetAmount(amount);
             resCavvPurchaseCC.SetCavv(cavv);
 			//resCavvPurchaseCC.SetExpDate(expdate); //mandatory for temp token only
+			resCavvPurchaseCC.SetThreeDSVersion("2"); //Mandatory for 3DS Version 2.0+
+			resCavvPurchaseCC.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
 			resCavvPurchaseCC.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
@@ -64,6 +66,7 @@ namespace Moneris
                 Console.WriteLine("PaymentType = " + receipt.GetPaymentType());
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+				Console.WriteLine("ThreeDSVersion = " + receipt.GetThreeDSVersion());
 
                 //ResolveData
                 Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
