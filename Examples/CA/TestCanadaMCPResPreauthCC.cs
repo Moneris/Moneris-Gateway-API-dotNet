@@ -37,7 +37,7 @@ namespace Moneris
 			mcpResPreauthCC.SetMCPVersion("1.0");
 			mcpResPreauthCC.SetCardholderAmount("500");
 			mcpResPreauthCC.SetCardholderCurrencyCode("840");
-			//mcpResPreauthCC.SetMCPRateToken("P1538681661706745");
+			mcpResPreauthCC.SetMCPRateToken("P1538681661706745");
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

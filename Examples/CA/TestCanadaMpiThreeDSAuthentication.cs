@@ -68,6 +68,14 @@ public class TestCanadaMpiThreeDSAuthentication
 			Console.WriteLine("ChallengeURL = " + receipt.GetMpiChallengeURL());
 			Console.WriteLine("ChallengeData = " + receipt.GetMpiChallengeData());
 			Console.WriteLine("ThreeDSServerTransId = " + receipt.GetMpiThreeDSServerTransId());
+
+			//In Frictionless flow, you may receive TransStatus as "Y",
+			//in which case you can then proceed directly to Cavv Purchase/Preauth with values below
+			if(receipt.GetMpiTransStatus().Equals("Y"))
+			{
+				Console.WriteLine("Cavv = " + receipt.GetMpiCavv());
+				Console.WriteLine("ECI = " + receipt.GetMpiEci());
+			}
 		}
 		catch (Exception e)
 		{

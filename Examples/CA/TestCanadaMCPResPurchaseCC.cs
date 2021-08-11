@@ -33,11 +33,12 @@ namespace Moneris
             mcpResPurchaseCC.SetDynamicDescriptor(descriptor);
 			mcpResPurchaseCC.SetCofInfo(cof);
 		    //mcpResPurchaseCC.SetExpDate("1511"); //optional - use for temp token only
+            
 			//MCP Fields
 			mcpResPurchaseCC.SetMCPVersion("1.0");
 			mcpResPurchaseCC.SetCardholderAmount("500");
 			mcpResPurchaseCC.SetCardholderCurrencyCode("840");
-			//mcpResPurchaseCC.SetMCPRateToken("P1538681661706745");
+			mcpResPurchaseCC.SetMCPRateToken("P1538681661706745");
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

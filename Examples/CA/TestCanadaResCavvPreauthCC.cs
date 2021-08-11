@@ -9,7 +9,7 @@ namespace Moneris
         public static void Main(string[] args)
         {
             string store_id = "store1";
-            string api_token = "yesguy";
+            string api_token = "yesguy1";
             string data_key = "4INQR1A8ocxD0oafSz50LADXy";
             string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
             string amount = "1.00";
@@ -33,7 +33,8 @@ namespace Moneris
 			//resCavvPreauthCC.SetExpDate(expdate); //mandatory for temp token only
 			resCavvPreauthCC.SetThreeDSVersion("2"); //Mandatory for 3DS Version 2.0+
 			resCavvPreauthCC.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
-			resCavvPreauthCC.SetCofInfo(cof);
+			//resCavvPreauthCC.SetDsTransId("12345"); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
+            resCavvPreauthCC.SetCofInfo(cof);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

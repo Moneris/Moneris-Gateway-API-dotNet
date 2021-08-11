@@ -64,7 +64,8 @@ namespace Moneris
             cavvPurchase.SetDynamicDescriptor(dynamic_descriptor);
 			cavvPurchase.SetThreeDSVersion("2"); //Mandatory for 3DS Version 2.0+
 			cavvPurchase.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
-			//cavvPurchase.SetNetwork("Interac");  //set only for Interac e-commerce
+			//cavvPurchase.SetDsTransId("12345"); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
+            //cavvPurchase.SetNetwork("Interac");  //set only for Interac e-commerce
 			//cavvPurchase.SetDataType("3DSecure"); //set only for Interac e-commerce
 			//cavvPurchase.SetWalletIndicator(wallet_indicator); //set only wallet transactions e.g. APPLE PAY
 			
