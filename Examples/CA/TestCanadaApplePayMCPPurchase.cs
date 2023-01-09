@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using System.Text;
 using Moneris;
 
-public class TestCanadaApplePayTokenPreauth
+public class TestCanadaApplePayMCPPurchase
 {
 	public static void Main(string[] args)
 	{
@@ -24,24 +24,30 @@ public class TestCanadaApplePayTokenPreauth
 		string dynamic_descriptor = "nqa-dd";
 		string processing_country_code = "CA";
 
-		ApplePayTokenPreauth applePayTokenPreauth = new ApplePayTokenPreauth();
-		applePayTokenPreauth.SetOrderId(order_id);
-		applePayTokenPreauth.SetCustId(cust_id);
-		applePayTokenPreauth.SetAmount(amount);
-		applePayTokenPreauth.SetDisplayName(display_name);
-		applePayTokenPreauth.SetNetwork(network);
-		applePayTokenPreauth.SetVersion(version);
-		applePayTokenPreauth.SetData(data);
-		applePayTokenPreauth.SetSignature(signature);
-		applePayTokenPreauth.SetHeader(public_key_hash, ephemeral_public_key, transaction_id);
-		applePayTokenPreauth.SetDynamicDescriptor(dynamic_descriptor);
+		ApplePayMCPPurchase applePayMCPPurchase = new ApplePayMCPPurchase();
+		applePayMCPPurchase.SetOrderId(order_id);
+		applePayMCPPurchase.SetCustId(cust_id);
+		applePayMCPPurchase.SetAmount(amount);
+		applePayMCPPurchase.SetDisplayName(display_name);
+		applePayMCPPurchase.SetNetwork(network);
+		applePayMCPPurchase.SetVersion(version);
+		applePayMCPPurchase.SetData(data);
+		applePayMCPPurchase.SetSignature(signature);
+		applePayMCPPurchase.SetHeader(public_key_hash, ephemeral_public_key, transaction_id);
+		applePayMCPPurchase.SetDynamicDescriptor(dynamic_descriptor);
+
+        //MCP Fields
+        applePayMCPPurchase.SetMCPVersion("1.0");
+        applePayMCPPurchase.SetCardholderAmount("500");
+        applePayMCPPurchase.SetCardholderCurrencyCode("840");
+        applePayMCPPurchase.SetMCPRateToken("P1538681661706745");
 
 		HttpsPostRequest mpgReq = new HttpsPostRequest();
 		mpgReq.SetProcCountryCode(processing_country_code);
 		mpgReq.SetTestMode(true); //false or comment out this line for production transactions
 		mpgReq.SetStoreId(store_id);
 		mpgReq.SetApiToken(api_token);
-		mpgReq.SetTransaction(applePayTokenPreauth);
+		mpgReq.SetTransaction(applePayMCPPurchase);
 		mpgReq.Send();
 
 		try
@@ -68,6 +74,14 @@ public class TestCanadaApplePayTokenPreauth
 			Console.WriteLine("HostId = " + receipt.GetHostId());
 			Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
 			Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
+
+            Console.WriteLine("MerchantSettlementAmount = " + receipt.GetMerchantSettlementAmount());
+            Console.WriteLine("CardholderAmount = " + receipt.GetCardholderAmount());
+            Console.WriteLine("CardholderCurrencyCode = " + receipt.GetCardholderCurrencyCode());
+            Console.WriteLine("MCPRate = " + receipt.GetMCPRate());
+            Console.WriteLine("MCPErrorStatusCode = " + receipt.GetMCPErrorStatusCode());
+            Console.WriteLine("MCPErrorMessage = " + receipt.GetMCPErrorMessage());
+            Console.WriteLine("HostId = " + receipt.GetHostId());
 			Console.ReadLine();
 		}
 		catch (Exception e)

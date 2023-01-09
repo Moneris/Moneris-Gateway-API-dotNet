@@ -73,6 +73,7 @@ namespace CanadaPurchaseConsoleTest
                 //Console.WriteLine("StatusCode = " + receipt.GetStatusCode());
                 //Console.WriteLine("StatusMessage = " + receipt.GetStatusMessage());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 				
 				Console.WriteLine("MerchantSettlementAmount = " + receipt.GetMerchantSettlementAmount());
 				Console.WriteLine("CardholderAmount = " + receipt.GetCardholderAmount());

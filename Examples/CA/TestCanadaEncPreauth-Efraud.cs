@@ -67,6 +67,7 @@ namespace Moneris
 				Console.WriteLine("Cvd Response = " + receipt.GetCvdResultCode());
 				Console.WriteLine("CardLevelResult = " + receipt.GetCardLevelResult());
 				Console.WriteLine("MaskedPan = " + receipt.GetMaskedPan());
+				Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 			}
 			catch (Exception e)
 			{

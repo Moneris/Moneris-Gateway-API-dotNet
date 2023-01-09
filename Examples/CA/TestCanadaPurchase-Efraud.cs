@@ -75,6 +75,7 @@ namespace Moneris
                 Console.WriteLine("Cvd Response = " + receipt.GetCvdResultCode());
                 Console.WriteLine("ITD Response = " + receipt.GetITDResponse());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 Console.ReadLine();
             }
             catch (Exception e)

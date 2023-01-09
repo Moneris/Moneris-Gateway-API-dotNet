@@ -59,6 +59,7 @@ public class TestCanadaGooglePayPurchase
 			Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
 			Console.WriteLine("HostId = " + receipt.GetHostId());
 			Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+			Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 			Console.ReadLine();
 		}
 		catch (Exception e)

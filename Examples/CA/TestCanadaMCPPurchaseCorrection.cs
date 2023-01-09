@@ -51,6 +51,7 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 				
 				Console.WriteLine("MerchantSettlementAmount = " + receipt.GetMerchantSettlementAmount());
 				Console.WriteLine("CardholderAmount = " + receipt.GetCardholderAmount());

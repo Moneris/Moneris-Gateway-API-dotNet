@@ -21,6 +21,13 @@ namespace Moneris
             purchasecorrection.SetDynamicDescriptor(dynamic_descriptor);
             purchasecorrection.SetCustId("my customer id");
 
+            //Optional
+            InstallmentInfo installmentInfo = new InstallmentInfo();
+            installmentInfo.SetPlanId("ae859ef1-eb91-b708-8b80-1dd481746401");
+            installmentInfo.SetPlanIdRef("0000000065");
+            installmentInfo.SetTacVersion("2");
+            //purchasecorrection.SetInstallmentInfo(installmentInfo);
+
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -51,6 +58,16 @@ namespace Moneris
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
+                 
+                // InstallmentResults installmentResults = receipt.GetInstallmentResults();
+
+                // Console.WriteLine("\nPlanId = " + installmentResults.GetPlanId() +"\n");
+                // Console.WriteLine("PlanIDRef = " + installmentResults.GetPlanIDRef());
+                // Console.WriteLine("TacVersion = " + installmentResults.GetTacVersion());
+                // Console.WriteLine("PlanAcceptanceId = " + installmentResults.GetPlanAcceptanceId());
+                // Console.WriteLine("PlanStatus = " + installmentResults.GetPlanStatus()); 
+                // Console.WriteLine("PlanResponse = " + installmentResults.GetPlanResponse());
                 Console.ReadLine();
             }
             catch (Exception e)

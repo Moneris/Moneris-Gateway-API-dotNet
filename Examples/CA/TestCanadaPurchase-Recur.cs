@@ -95,6 +95,7 @@ namespace Moneris
                 Console.WriteLine("Recur Success = " + receipt.GetRecurSuccess());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 Console.ReadLine();
             }
             catch (Exception e)

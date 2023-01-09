@@ -5,10 +5,10 @@ namespace Moneris
     {
         public static void Main(string[] args)
         {
-            string store_id = "store5";
-            string api_token = "yesguy";
-            string data_key = "V6F9PJKdXQj6vKiCMNrWbsyJ2";
-            string order_id = "Test_P_033333_6";
+            string store_id = "monca00597";
+            string api_token = "O27AbCbxQorPggMQe6hU";
+            string data_key = "m5FubAMXr8IK4lC0eTv0c9zA0";
+            string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
             string cust_id = "Customer1";
             string crypt = "7";
 			string processing_country_code = "CA";
@@ -30,9 +30,9 @@ namespace Moneris
 
 			/*************** Credential on File *************************************/
 			CofInfo cof = new CofInfo();
-			cof.SetPaymentIndicator("U");
-			cof.SetPaymentInformation("2");
-			cof.SetIssuerId("168451306048014");
+			cof.SetPaymentIndicator("C");
+			cof.SetPaymentInformation("0");
+			//cof.SetIssuerId("168451306048014");
 
             ResCardVerificationCC rescardverify = new ResCardVerificationCC();
 			rescardverify.SetDataKey(data_key);
@@ -43,6 +43,10 @@ namespace Moneris
             rescardverify.SetAvsInfo(avsCheck);
             rescardverify.SetCvdInfo(cvdCheck);
 			rescardverify.SetCofInfo(cof);
+
+            //NT Response Option
+			bool get_nt_response = true;
+			rescardverify.SetGetNtResponse(get_nt_response);
 			
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -75,6 +79,15 @@ namespace Moneris
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
+
+                if (get_nt_response)
+				{
+					Console.WriteLine("NTResponseCode = " + receipt.GetNTResponseCode());
+					Console.WriteLine("NTMessage = " + receipt.GetNTMessage());
+					Console.WriteLine("NTUsed = " + receipt.GetNTUsed());
+                    Console.WriteLine("NTMaskedToken = " + receipt.GetNTMaskedToken());
+				}
 				Console.ReadLine();
             }
             catch (Exception e)

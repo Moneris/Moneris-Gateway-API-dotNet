@@ -18,6 +18,7 @@ namespace Moneris
             string expdate = "1911";
             string crypt_type = "7";
             string processing_country_code = "CA";
+            string ds_trans_id = "12345";
             bool status_check = false;
 
             CofInfo cof = new CofInfo();
@@ -35,7 +36,7 @@ namespace Moneris
             mcpResCavvPreauthCC.SetCryptType(crypt_type);
             mcpResCavvPreauthCC.SetThreeDSVersion("2"); //Mandatory for 3DS Version 2.0+
             mcpResCavvPreauthCC.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
-            //mcpResCavvPreauthCC.SetDsTransId("12345"); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
+            mcpResCavvPreauthCC.SetDsTransId(ds_trans_id); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
 
             mcpResCavvPreauthCC.SetCofInfo(cof);
 

@@ -1,3 +1,39 @@
+Version 1.0.35:
+	- Added support for SetResponseEncoding in HttpsPostRequest method
+
+Version 1.0.34:
+	- Added TotalPlanCost field to PlanDetails.
+
+Version 1.0.33:
+	- Updated sample codes of the transactions that has trId and tokenCryptogram options.
+
+Version 1.0.32:
+	- Fixed Cof issue in resCavvPreauth transaction.
+
+Version 1.0.31:
+	- Added getSourcePanLast4 to Receipt and updated sample codes that use NT.
+
+Version 1.0.30:
+	- Added Expdate to ResInstallmentLookup transaction.
+
+Version 1.0.29:
+	- Added InstallmentLookup transaction.
+	- Added ResInstallmentLookup transaction.
+	- Added receipt handling for installment responses.
+	- Added Installment info object for the following transactions:
+		purchase, preauth, purchase_correction, completion,
+        refund, cavv_purchase, cavv_preauth, res_purchase_cc,
+        res_preauth_cc, res_cavv_purchase, res_cavv_preauth,
+        googlepay_purchase, googlepay_preauth
+	- Added setGetNtResponse method to the following transactions: 
+		(res_purchase, res_preauth, res_cavv_purchase, res_cavv_preauth, res_card_verification)
+	- Added (getNTResponseCode, getNTMessage, getNTUsed, and getNTMaskedToken) methods 	to the Receipt.
+	- Added tr_id and token_cryptogram attributes to (purchase, preauth, cavv_purchase, cavv_preauth, and card_varification)
+
+Version 1.0.28:
+	- Added ApplePay MCP Purchase and Preauth transactions.
+	- Added GooglePay MCP Purchase and Preauth transactions.
+
 Version 1.0.27:
 	- Added “ds_trans_id” variable for CavvPreauth, CavvPurchase, ResCavvPurchase, and ResCavvPreauth. 
 	- Added 3DS 2.0 within the TestCanadaCavvPurchaseRecur transaction type 

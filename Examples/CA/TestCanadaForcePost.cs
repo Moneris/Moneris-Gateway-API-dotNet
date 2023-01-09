@@ -61,6 +61,7 @@ namespace Moneris
                 Console.WriteLine("CorporateCard = " + receipt.GetCorporateCard());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 //Console.WriteLine("MessageId = " + receipt.GetMessageId());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 Console.ReadLine();
             }
             catch (Exception e)

@@ -55,6 +55,7 @@ namespace Moneris
 				Console.WriteLine("Ticket = " + receipt.GetTicket());
 				Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
 				Console.WriteLine("CardLevelResult = " + receipt.GetCardLevelResult());
+				Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 			}
 			catch (Exception e)
 			{

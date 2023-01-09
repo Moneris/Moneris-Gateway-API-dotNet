@@ -80,6 +80,7 @@ namespace Moneris
                 Console.WriteLine("FeeType = " + receipt.GetFeeType());
                 //Console.WriteLine("StatusCode = " + receipt.GetStatusCode());
                 //Console.WriteLine("StatusMessage = " + receipt.GetStatusMessage());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 Console.ReadLine();
             }
             catch (Exception e)

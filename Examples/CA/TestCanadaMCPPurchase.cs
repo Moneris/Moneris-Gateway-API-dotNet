@@ -74,7 +74,7 @@ namespace CanadaMCPPurchaseConsoleTest
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
                 Console.WriteLine("HostId = " + receipt.GetHostId());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
-
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 
 				Console.WriteLine("MerchantSettlementAmount = " + receipt.GetMerchantSettlementAmount());
 				Console.WriteLine("CardholderAmount = " + receipt.GetCardholderAmount());
@@ -83,7 +83,6 @@ namespace CanadaMCPPurchaseConsoleTest
 				Console.WriteLine("MCPErrorStatusCode = " + receipt.GetMCPErrorStatusCode());
 				Console.WriteLine("MCPErrorMessage = " + receipt.GetMCPErrorMessage());
 				Console.WriteLine("HostId = " + receipt.GetHostId());
-
                 Console.ReadLine();
             }
             catch (Exception e)

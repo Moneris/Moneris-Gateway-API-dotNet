@@ -19,6 +19,7 @@ namespace Moneris
 			string wallet_indicator = "APP";
             string processing_country_code = "CA";
 			string crypt_type = "5";
+            string ds_trans_id = "12345";
             bool status_check = false;
 
 			CofInfo cof = new CofInfo();
@@ -37,7 +38,7 @@ namespace Moneris
             mcpCavvPurchase.SetDynamicDescriptor(dynamic_descriptor);
 			mcpCavvPurchase.SetThreeDSVersion("2"); //Mandatory for 3DS Version 2.0+
 			mcpCavvPurchase.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
-			//mcpCavvPurchase.SetDsTransId("12345"); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
+			mcpCavvPurchase.SetDsTransId(ds_trans_id); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
             //mcpCavvPurchase.SetNetwork("Interac");  //set only for Interac e-commerce
 			//mcpCavvPurchase.SetDataType("3DSecure"); //set only for Interac e-commerce
 			//mcpCavvPurchase.SetWalletIndicator(wallet_indicator); //set only wallet transactions e.g. APPLE PAY
@@ -82,6 +83,7 @@ namespace Moneris
                 Console.WriteLine("CavvResultCode = " + receipt.GetCavvResultCode());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
 				Console.WriteLine("ThreeDSVersion = " + receipt.GetThreeDSVersion());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 
                 Console.WriteLine("MerchantSettlementAmount = " + receipt.GetMerchantSettlementAmount());
 				Console.WriteLine("CardholderAmount = " + receipt.GetCardholderAmount());

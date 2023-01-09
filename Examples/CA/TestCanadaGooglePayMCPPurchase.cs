@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using System.Text;
 using Moneris;
 
-public class TestCanadaGooglePayPreauth
+public class TestCanadaGooglePayMCPPurchase
 {
 	public static void Main(string[] args)
 	{
@@ -20,20 +20,26 @@ public class TestCanadaGooglePayPreauth
 		string dynamic_descriptor = "nqa-dd";
 		string processing_country_code = "CA";
 
-		GooglePayPreauth googlePayPreauth = new GooglePayPreauth();
-		googlePayPreauth.SetOrderId(order_id);
-		googlePayPreauth.SetCustId(cust_id);
-		googlePayPreauth.SetAmount(amount);
-		googlePayPreauth.SetNetwork(network);
-		googlePayPreauth.SetPaymentToken(signature, protocol_version, signed_message);
-		googlePayPreauth.SetDynamicDescriptor(dynamic_descriptor);
+		GooglePayMCPPurchase googlePayMCPPurchase = new GooglePayMCPPurchase();
+		googlePayMCPPurchase.SetOrderId(order_id);
+		googlePayMCPPurchase.SetCustId(cust_id);
+		googlePayMCPPurchase.SetAmount(amount);
+		googlePayMCPPurchase.SetNetwork(network);
+		googlePayMCPPurchase.SetPaymentToken(signature, protocol_version, signed_message);
+		googlePayMCPPurchase.SetDynamicDescriptor(dynamic_descriptor);
+
+        //MCP Fields
+        googlePayMCPPurchase.SetMCPVersion("1.0");
+        googlePayMCPPurchase.SetCardholderAmount("500");
+        googlePayMCPPurchase.SetCardholderCurrencyCode("840");
+        googlePayMCPPurchase.SetMCPRateToken("P1538681661706745");
 		
 		HttpsPostRequest mpgReq = new HttpsPostRequest();
 		mpgReq.SetProcCountryCode(processing_country_code);
 		mpgReq.SetTestMode(true); //false or comment out this line for production transactions
 		mpgReq.SetStoreId(store_id);
 		mpgReq.SetApiToken(api_token);
-		mpgReq.SetTransaction(googlePayPreauth);
+		mpgReq.SetTransaction(googlePayMCPPurchase);
 		mpgReq.Send();
 
 		try
@@ -60,7 +66,15 @@ public class TestCanadaGooglePayPreauth
 			Console.WriteLine("HostId = " + receipt.GetHostId());
 			Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
 			Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
-		
+
+            Console.WriteLine("MerchantSettlementAmount = " + receipt.GetMerchantSettlementAmount());
+            Console.WriteLine("CardholderAmount = " + receipt.GetCardholderAmount());
+            Console.WriteLine("CardholderCurrencyCode = " + receipt.GetCardholderCurrencyCode());
+            Console.WriteLine("MCPRate = " + receipt.GetMCPRate());
+            Console.WriteLine("MCPErrorStatusCode = " + receipt.GetMCPErrorStatusCode());
+            Console.WriteLine("MCPErrorMessage = " + receipt.GetMCPErrorMessage());
+            Console.WriteLine("HostId = " + receipt.GetHostId());
+
 			Console.ReadLine();
 		}
 		catch (Exception e)

@@ -48,6 +48,7 @@ namespace Moneris
                 Console.WriteLine("TransTime = " + receipt.GetTransTime());
                 Console.WriteLine("Ticket = " + receipt.GetTicket());
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 Console.ReadLine();
             }
             catch (Exception e)

@@ -57,6 +57,7 @@ namespace Moneris
 				//Console.WriteLine("CardLevelResult = " + receipt.GetCardLevelResult());
 				//Console.WriteLine("StatusCode = " + receipt.GetStatusCode());
 				//Console.WriteLine("StatusMessage = " + receipt.GetStatusMessage());
+				Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
 			}
 			catch (Exception e)
 			{

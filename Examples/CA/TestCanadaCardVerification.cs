@@ -37,6 +37,10 @@ namespace Moneris
             cardVerification.SetCvdInfo(cvdCheck);
 			cardVerification.SetCofInfo(cof);
 
+		    // TrId and TokenCryptogram are optional, refer documentation for more details.
+            cardVerification.SetTrId("50189815682");
+		    cardVerification.SetTokenCryptogram("APmbM/411e0uAAH+s6xMAAADFA==");
+
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -68,6 +72,7 @@ namespace Moneris
                 Console.WriteLine("TimedOut = " + receipt.GetTimedOut());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 Console.ReadLine();
             }
             catch (Exception e)
