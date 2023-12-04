@@ -80,7 +80,8 @@ namespace Moneris
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
 				Console.WriteLine("ThreeDSVersion = " + receipt.GetThreeDSVersion());
                 Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
-                Console.ReadLine();
+		Console.WriteLine("AdviceCode = " + receipt.GetAdviceCode());            
+Console.ReadLine();
             }
             catch (Exception e)
             {

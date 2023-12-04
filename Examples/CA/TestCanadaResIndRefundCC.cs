@@ -25,6 +25,10 @@ namespace Moneris
             resIndRefundCC.SetCryptType(crypt_type);
             resIndRefundCC.SetDataKey(data_key);
 
+            //NT Response Option
+			bool get_nt_response = true;
+			resIndRefundCC.SetGetNtResponse(get_nt_response);
+
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -65,6 +69,18 @@ namespace Moneris
                 Console.WriteLine("Avs Street Number = " + receipt.GetResDataAvsStreetNumber());
                 Console.WriteLine("Avs Street Name = " + receipt.GetResDataAvsStreetName());
                 Console.WriteLine("Avs Zipcode = " + receipt.GetResDataAvsZipcode());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
+
+                if (get_nt_response)
+				{
+					Console.WriteLine("\nNTResponseCode = " + receipt.GetNTResponseCode());
+					Console.WriteLine("NTMessage = " + receipt.GetNTMessage());
+					Console.WriteLine("NTUsed = " + receipt.GetNTUsed());
+                    Console.WriteLine("NTTokenBin = " + receipt.GetNTTokenBin());
+                    Console.WriteLine("NTTokenLast4 = " + receipt.GetNTTokenLast4());
+                    Console.WriteLine("NTTokenExpDate = " + receipt.GetNTTokenExpDate());
+				}
+
                 Console.ReadLine();
             }
             catch (Exception e)

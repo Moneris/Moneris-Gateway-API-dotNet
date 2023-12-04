@@ -29,6 +29,10 @@ namespace Moneris
             resForcePostCC.SetCryptType(crypt_type);
             resForcePostCC.SetDynamicDescriptor(descriptor);
 
+            //NT Response Option
+			bool get_nt_response = true;
+			resForcePostCC.SetGetNtResponse(get_nt_response);
+
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
             mpgReq.SetTestMode(true); //false or comment out this line for production transactions
@@ -60,6 +64,7 @@ namespace Moneris
                 Console.WriteLine("PaymentType = " + receipt.GetPaymentType());
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
+                Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
                 
 				Console.WriteLine("Cust ID = " + receipt.GetResDataCustId());
                 Console.WriteLine("Phone = " + receipt.GetResDataPhone());
@@ -71,6 +76,17 @@ namespace Moneris
                 Console.WriteLine("Avs Street Number = " + receipt.GetResDataAvsStreetNumber());
                 Console.WriteLine("Avs Street Name = " + receipt.GetResDataAvsStreetName());
                 Console.WriteLine("Avs Zipcode = " + receipt.GetResDataAvsZipcode());
+                
+                if (get_nt_response)
+				{
+					Console.WriteLine("\nNTResponseCode = " + receipt.GetNTResponseCode());
+					Console.WriteLine("NTMessage = " + receipt.GetNTMessage());
+					Console.WriteLine("NTUsed = " + receipt.GetNTUsed());
+                    Console.WriteLine("NTTokenBin = " + receipt.GetNTTokenBin());
+                    Console.WriteLine("NTTokenLast4 = " + receipt.GetNTTokenLast4());
+                    Console.WriteLine("NTTokenExpDate = " + receipt.GetNTTokenExpDate());
+				}
+                
                 Console.ReadLine();
             }
             catch (Exception e)

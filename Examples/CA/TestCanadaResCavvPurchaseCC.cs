@@ -96,10 +96,12 @@ namespace Moneris
 
                 if (get_nt_response)
 				{
-					Console.WriteLine("NTResponseCode = " + receipt.GetNTResponseCode());
+					Console.WriteLine("\nNTResponseCode = " + receipt.GetNTResponseCode());
 					Console.WriteLine("NTMessage = " + receipt.GetNTMessage());
 					Console.WriteLine("NTUsed = " + receipt.GetNTUsed());
-                    Console.WriteLine("NTMaskedToken = " + receipt.GetNTMaskedToken());
+                    Console.WriteLine("NTTokenBin = " + receipt.GetNTTokenBin());
+                    Console.WriteLine("NTTokenLast4 = " + receipt.GetNTTokenLast4());
+                    Console.WriteLine("NTTokenExpDate = " + receipt.GetNTTokenExpDate());
 				}
 
                 // InstallmentResults installmentResults = receipt.GetInstallmentResults();
