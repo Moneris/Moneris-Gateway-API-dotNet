@@ -1,5 +1,7 @@
 using System;
 using Moneris;
+using System.Collections;
+
 
 public class TestCanadaMpiThreeDSAuthentication
 {
@@ -13,7 +15,7 @@ public class TestCanadaMpiThreeDSAuthentication
 		MpiThreeDSAuthentication mpiThreeDSAuthentication = new MpiThreeDSAuthentication();
         mpiThreeDSAuthentication.SetOrderId("Test1597873519352");	//must be the same one that was used in MpiCardLookup call
         mpiThreeDSAuthentication.SetCardholderName("Moneris Test");
-        mpiThreeDSAuthentication.SetPan("4740611374762707");
+        mpiThreeDSAuthentication.SetPan("340087427838525");
 		//mpiThreeDSAuthentication.SetDataKey("8OOXGiwxgvfbZngigVFeld9d2"); //Optional - For Moneris Vault and Hosted Tokenization tokens in place of SetPan
         mpiThreeDSAuthentication.SetExpdate("2310");
         mpiThreeDSAuthentication.SetAmount("1.00");
@@ -45,7 +47,25 @@ public class TestCanadaMpiThreeDSAuthentication
         mpiThreeDSAuthentication.SetEmail("test@email.com");
         mpiThreeDSAuthentication.SetRequestChallenge("Y"); //(Y|N Requesting challenge regardless of outcome)
 
-		HttpsPostRequest mpgReq = new HttpsPostRequest();
+        mpiThreeDSAuthentication.SetMessageCategory("01");
+        mpiThreeDSAuthentication.SetDeviceChannel("02");
+        mpiThreeDSAuthentication.SetDecoupledRequestIndicator("Y");
+        mpiThreeDSAuthentication.SetDecoupledRequestMaxTime("00010");
+        mpiThreeDSAuthentication.SetDecoupledRequestAsyncURL("https://yourasyncnotificationurl.com");
+        mpiThreeDSAuthentication.SetRiIndicator("03");
+        //mpiThreeDSAuthentication.SetRecurringExpiry("20221230");
+        //mpiThreeDSAuthentication.SetRecurringFrequency("031");
+
+		Hashtable priorRequestParams = new Hashtable();
+        priorRequestParams.Add("prior_request_auth_data", "1");
+        priorRequestParams.Add("prior_request_ref", "2c581b9d-7f77-4772-a92b-e11df34bce61");
+        priorRequestParams.Add("prior_request_auth_method", "01");
+        priorRequestParams.Add("prior_request_auth_timestamp", "202308151640");
+        PaiInfo pai = new PaiInfo();
+        pai.SetPriorRequest(priorRequestParams);
+        //mpiThreeDSAuthentication.setPriorRequestAuthInfo(pai);
+
+        HttpsPostRequest mpgReq = new HttpsPostRequest();
 		mpgReq.SetProcCountryCode(processing_country_code);
 		mpgReq.SetTestMode(true); //false or comment out this line for production transactions
 		mpgReq.SetStoreId(store_id);
@@ -65,13 +85,20 @@ public class TestCanadaMpiThreeDSAuthentication
 			
 			Console.WriteLine("MessageType = " + receipt.GetMpiMessageType());
 			Console.WriteLine("TransStatus = " + receipt.GetMpiTransStatus());
+			Console.WriteLine("TransStatusReason = " + receipt.GetMpiTransStatusReason());
 			Console.WriteLine("ChallengeURL = " + receipt.GetMpiChallengeURL());
 			Console.WriteLine("ChallengeData = " + receipt.GetMpiChallengeData());
-			Console.WriteLine("ThreeDSServerTransId = " + receipt.GetMpiThreeDSServerTransId());
+            Console.WriteLine("ThreeDSServerTransId = " + receipt.GetMpiThreeDSServerTransId());
+            Console.WriteLine("ThreeDSVersion = " + receipt.GetThreeDSVersion());
+            Console.WriteLine("ThreeDSAcsTransID = " + receipt.GetMpiThreeDSAcsTransID());
+            Console.WriteLine("ThreeDSTransID = " + receipt.GetMpiDSTransId());
+            Console.WriteLine("ThreeDSAuthTimeStamp = " + receipt.GetMpiThreeDSAuthTimeStamp());
+            Console.WriteLine("CardholderInfo = " + receipt.GetMpiCardholderInfo());
+            Console.WriteLine("AuthenticationType = " + receipt.GetMpiAuthenticationType());
 
-			//In Frictionless flow, you may receive TransStatus as "Y",
-			//in which case you can then proceed directly to Cavv Purchase/Preauth with values below
-			if(receipt.GetMpiTransStatus().Equals("Y"))
+            //In Frictionless flow, you may receive TransStatus as "Y",
+            //in which case you can then proceed directly to Cavv Purchase/Preauth with values below
+            if (receipt.GetMpiTransStatus().Equals("Y"))
 			{
 				Console.WriteLine("Cavv = " + receipt.GetMpiCavv());
 				Console.WriteLine("ECI = " + receipt.GetMpiEci());

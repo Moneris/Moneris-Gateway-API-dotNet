@@ -10,11 +10,11 @@ namespace CanadaPurchaseConsoleTest
     {
 		public static void Main(string[] args)
         {
-            string store_id = "monca03650";
-            string api_token = "7Yw0MPTlhjBRcZiE6837";
+            string store_id = "store5";
+            string api_token = "yesguy";
             string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
-            string amount = "4840.00";
-            string pan = "5454545454545454";
+            string amount = "5.00";
+            string pan = "4242424242424242";
             string expdate = "0412";
             string crypt = "7";
             string processing_country_code = "CA";
@@ -81,7 +81,6 @@ namespace CanadaPurchaseConsoleTest
                 //Console.WriteLine("StatusMessage = " + receipt.GetStatusMessage());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
-                Console.WriteLine("Advice Code = " + receipt.GetAdviceCode());
 
                 // InstallmentResults installmentResults = receipt.GetInstallmentResults();
 
