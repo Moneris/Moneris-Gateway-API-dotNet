@@ -5,14 +5,15 @@ namespace Moneris
     {
         public static void Main(string[] args)
         {
-            string store_id = "store5";
-            string api_token = "yesguy";
+            string store_id = "monca02932";
+            string api_token = "CG8kYzGgzVU5z23irgMx";
             string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
-            string pan = "4242424242424242";
+            string pan = "4761349999000039";
             string expdate = "1901"; //YYMM format
             string crypt = "7";
             string processing_country_code = "CA";
             bool status_check = false;
+            
 
             AvsInfo avsCheck = new AvsInfo();
             avsCheck.SetAvsStreetNumber("212");
@@ -28,6 +29,11 @@ namespace Moneris
 			cof.SetPaymentInformation("2");
 			cof.SetIssuerId("168451306048014");
 
+            AccountNameVerificationInfo ani = new AccountNameVerificationInfo();
+            ani.SetFirstName("FIRST");
+            ani.SetMiddleName("MIDDLE");
+            ani.SetLastName("LAST");
+
             CardVerification cardVerification = new CardVerification();
             cardVerification.SetOrderId(order_id);
             cardVerification.SetPan(pan);
@@ -36,6 +42,7 @@ namespace Moneris
             cardVerification.SetAvsInfo(avsCheck);
             cardVerification.SetCvdInfo(cvdCheck);
 			cardVerification.SetCofInfo(cof);
+            cardVerification.SetAccountNameVerificationInfo(ani);
 
 		    // TrId and TokenCryptogram are optional, refer documentation for more details.
             cardVerification.SetTrId("50189815682");
@@ -53,7 +60,9 @@ namespace Moneris
             try
             {
                 Receipt receipt = mpgReq.GetReceipt();
-
+                
+                Console.WriteLine(cardVerification.toXML());
+                
                 Console.WriteLine("CardType = " + receipt.GetCardType());
                 Console.WriteLine("TransAmount = " + receipt.GetTransAmount());
                 Console.WriteLine("TxnNumber = " + receipt.GetTxnNumber());
@@ -73,6 +82,7 @@ namespace Moneris
                 Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
+                Console.WriteLine("AccountNameVerificationResult = " + receipt.GetAccountNameVerificationResult());
                 Console.ReadLine();
             }
             catch (Exception e)

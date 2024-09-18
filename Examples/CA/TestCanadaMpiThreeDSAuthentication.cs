@@ -30,6 +30,7 @@ public class TestCanadaMpiThreeDSAuthentication
         mpiThreeDSAuthentication.SetBrowserScreenHeight("1000"); //(pixel height of cardholder screen)
         mpiThreeDSAuthentication.SetBrowserScreenWidth("1920"); //(pixel width of cardholder screen)
         mpiThreeDSAuthentication.SetBrowserLanguage("en-GB"); //(defined by IETF BCP47)
+        mpiThreeDSAuthentication.SetBrowserIP("127.0.0.1"); //(defined by IETF BCP47)
         
         //Optional Methods
 		mpiThreeDSAuthentication.SetBillAddress1("3300 Bloor St W");
@@ -63,7 +64,28 @@ public class TestCanadaMpiThreeDSAuthentication
         priorRequestParams.Add("prior_request_auth_timestamp", "202308151640");
         PaiInfo pai = new PaiInfo();
         pai.SetPriorRequest(priorRequestParams);
-        //mpiThreeDSAuthentication.setPriorRequestAuthInfo(pai);
+        mpiThreeDSAuthentication.SetPriorRequestAuthInfo(pai);
+        
+		Hashtable workPhoneParams = new Hashtable();
+        workPhoneParams.Add("cc", "1");
+        workPhoneParams.Add("subscriber", "1111111111");
+        WorkPhoneInfo wpi = new WorkPhoneInfo();
+        wpi.SetPhoneRequest(workPhoneParams);
+        mpiThreeDSAuthentication.SetWorkPhoneInfo(wpi);
+
+		Hashtable mobilePhoneParams = new Hashtable();
+        mobilePhoneParams.Add("cc", "2");
+        mobilePhoneParams.Add("subscriber", "2222222222");
+        MobilePhoneInfo mpi = new MobilePhoneInfo();
+        mpi.SetPhoneRequest(mobilePhoneParams);
+        mpiThreeDSAuthentication.SetMobilePhoneInfo(mpi);
+
+		Hashtable homePhoneParams = new Hashtable();
+        homePhoneParams.Add("cc", "3");
+        homePhoneParams.Add("subscriber", "3333333333");
+        HomePhoneInfo hpi = new HomePhoneInfo();
+        hpi.SetPhoneRequest(homePhoneParams);
+        mpiThreeDSAuthentication.SetHomePhoneInfo(hpi);
 
         HttpsPostRequest mpgReq = new HttpsPostRequest();
 		mpgReq.SetProcCountryCode(processing_country_code);
