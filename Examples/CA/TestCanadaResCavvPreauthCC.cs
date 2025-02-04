@@ -19,7 +19,6 @@ namespace Moneris
 			string processing_country_code = "CA";
             string ds_trans_id = "12345";
             bool status_check = false;
-            bool is_incremental = true;
 
 			CofInfo cof = new CofInfo();
 			cof.SetPaymentIndicator("C");
@@ -37,7 +36,6 @@ namespace Moneris
 			resCavvPreauthCC.SetThreeDSServerTransId("e11d4985-8d25-40ed-99d6-c3803fe5e68f"); //Mandatory for 3DS Version 2.0+ - obtained from MpiCavvLookup or MpiThreeDSAuthentication
 			resCavvPreauthCC.SetDsTransId(ds_trans_id); //Optional - to be used only if you are using 3rd party 3ds 2.0 service
             resCavvPreauthCC.SetCofInfo(cof);
-            resCavvPreauthCC.SetIsIncremental((is_incremental).ToString());
 
             // Optional - Installment Info
             // InstallmentInfo installmentInfo = new InstallmentInfo();
@@ -47,7 +45,7 @@ namespace Moneris
             // resCavvPreauthCC.SetInstallmentInfo(installmentInfo);
 
             //NT Response Option
-            bool get_nt_response = true;
+			bool get_nt_response = true;
 			resCavvPreauthCC.SetGetNtResponse(get_nt_response);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();

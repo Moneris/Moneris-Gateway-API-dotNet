@@ -9,11 +9,11 @@
     {
 		public static void Main(string[] args)
         {
-            string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
             string store_id = "monca03650";
-            string api_token = "7Yw0MPTlhjBRcZiE6837";          
-            string amount = "6000.00";
-            string pan = "4622943127023886";
+            string api_token = "7Yw0MPTlhjBRcZiE6837";
+            string order_id = "Test" + DateTime.Now.ToString("yyyyMMddhhmmss");
+            string amount = "4840.00";
+            string pan = "5454545454545454";
             string expdate = "2212"; //YYMM
             string crypt = "7";
             string processing_country_code = "CA";
@@ -80,6 +80,7 @@
                 Console.WriteLine("HostId = " + receipt.GetHostId());
                 Console.WriteLine("IssuerId = " + receipt.GetIssuerId());
                 Console.WriteLine("SourcePanLast4 = " + receipt.GetSourcePanLast4());
+                Console.WriteLine("Advice Code = " + receipt.GetAdviceCode());
 
                 // InstallmentResults installmentResults = receipt.GetInstallmentResults();
 

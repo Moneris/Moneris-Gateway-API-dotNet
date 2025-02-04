@@ -19,7 +19,6 @@ namespace Moneris
             string dynamic_descriptor = "my descriptor";
             string processing_country_code = "CA";
             bool status_check = false;
-            bool is_incremental = true;
 
 			CofInfo cof = new CofInfo();
 			cof.SetPaymentIndicator("C");
@@ -35,10 +34,9 @@ namespace Moneris
             resPreauthCC.SetDynamicDescriptor(dynamic_descriptor);
             resPreauthCC.SetExpDate(expdate);  //Temp Tokens only
 			resPreauthCC.SetCofInfo(cof);
-            resPreauthCC.SetIsIncremental((is_incremental).ToString());
 
             //NT Response Option
-            bool get_nt_response = true;
+			bool get_nt_response = true;
 			resPreauthCC.SetGetNtResponse(get_nt_response);
 
             // InstallmentInfo installmentInfo = new InstallmentInfo();

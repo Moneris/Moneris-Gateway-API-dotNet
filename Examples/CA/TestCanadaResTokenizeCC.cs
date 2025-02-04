@@ -8,10 +8,10 @@ namespace Moneris
     {
         public static void Main(string[] args)
         {
-            string store_id = "store1";
-            string api_token = "yesguy";
-            string order_id = "1000189096";
-            string txn_number = "880416-0_10";
+            string store_id = "monca00544";
+            string api_token = "5JLbUfpl9JsQzPmbyje7";
+            string order_id = "Test1737561056105";
+            string txn_number = "5354-0_1023";
             string phone = "0000000000";
             string email = "bob@smith.com";
             string note = "my note";
@@ -38,6 +38,7 @@ namespace Moneris
             resTokenizeCC.SetAvsInfo(avsCheck);
 			resTokenizeCC.SetCofInfo(cof);
             //resTokenizeCC.SetDataKeyFormat(data_key_format); //optional
+            resTokenizeCC.SetReturnIssuerId(true);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
@@ -73,6 +74,7 @@ namespace Moneris
                 Console.WriteLine("Avs Street Number = " + receipt.GetResDataAvsStreetNumber());
                 Console.WriteLine("Avs Street Name = " + receipt.GetResDataAvsStreetName());
                 Console.WriteLine("Avs Zipcode = " + receipt.GetResDataAvsZipcode());
+                Console.WriteLine("Issuer ID = " + receipt.GetIssuerId());
                 Console.ReadLine();
             }
             catch (Exception e)

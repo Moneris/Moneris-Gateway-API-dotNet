@@ -1,3 +1,5 @@
+Version 1.1.44:
+    - Added return_issue_id to res_tokenize_cc
 Version 1.0.40:
 	-Added Googlepay financial transactions with 3DS
 
