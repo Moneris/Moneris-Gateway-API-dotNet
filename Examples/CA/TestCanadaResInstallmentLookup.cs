@@ -90,11 +90,13 @@ namespace Moneris
 					Console.WriteLine("\nUpfrontFee = " + firstInstallment.GetUpfrontFee() + "\n");
 					Console.WriteLine("InstallmentFee = " + firstInstallment.GetInstallmentFee());
 					Console.WriteLine("Amount = " + firstInstallment.GetAmount());
+					Console.WriteLine("TotalAmount = " + firstInstallment.GetTotalAmount());
 
 					LastInstallment lastInstallment = installmentPlans[i].GetLastInstallment();
 
 					Console.WriteLine("\nInstallmentFee = " + lastInstallment.GetInstallmentFee());
 					Console.WriteLine("Amount = " + lastInstallment.GetAmount());
+					Console.WriteLine("TotalAmount = " + lastInstallment.GetTotalAmount());
 
 					Console.WriteLine("\nAPR = " + installmentPlans[i].GetAPR());
 					Console.WriteLine("\nTotalFees = " + installmentPlans[i].GetTotalFees());

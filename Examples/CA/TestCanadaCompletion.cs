@@ -32,6 +32,10 @@ namespace Moneris
             installmentInfo.SetPlanIdRef("0000000065");
             installmentInfo.SetTacVersion("2");
             //completion.SetInstallmentInfo(installmentInfo);
+            
+            SurchargeInfo surchargeInfo = new SurchargeInfo();
+            surchargeInfo.SetSurchargeAmount("1.00");
+            completion.SetSurchargeInfo(surchargeInfo);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

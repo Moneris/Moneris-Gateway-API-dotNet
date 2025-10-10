@@ -48,6 +48,10 @@ namespace Moneris
 		    // TrId and TokenCryptogram are optional, refer documentation for more details.
             cavvPurchase.SetTrId("50189815682");
 		    cavvPurchase.SetTokenCryptogram("APmbM/411e0uAAH+s6xMAAADFA==");
+		    
+		    SurchargeInfo surchargeInfo = new SurchargeInfo();
+		    surchargeInfo.SetSurchargeAmount("1.00");
+		    cavvPurchase.SetSurchargeInfo(surchargeInfo);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest(); 
             mpgReq.SetProcCountryCode(processing_country_code);
