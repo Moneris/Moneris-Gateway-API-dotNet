@@ -25,17 +25,25 @@ namespace Moneris
             refund.SetDynamicDescriptor(dynamic_descriptor);
 
             //Optional
-            InstallmentInfo installmentInfo = new InstallmentInfo();
-            installmentInfo.SetPlanId("ae859ef1-eb91-b708-8b80-1dd481746401");
-            installmentInfo.SetPlanIdRef("0000000065");
-            installmentInfo.SetTacVersion("2");
+            // InstallmentInfo installmentInfo = new InstallmentInfo();
+            // installmentInfo.SetPlanId("ae859ef1-eb91-b708-8b80-1dd481746401");
+            // installmentInfo.SetPlanIdRef("0000000065");
+            // installmentInfo.SetTacVersion("2");
             //refund.SetInstallmentInfo(installmentInfo);
             
                
             SurchargeInfo surchargeInfo = new SurchargeInfo();
             surchargeInfo.SetSurchargeAmount("1.00");
             refund.SetSurchargeInfo(surchargeInfo);
-
+            
+            PBBInfo pbbInfo= new PBBInfo();
+            String consentId="1b5ee10a-5356-4a71-b2cf-874ab134661f";
+            String lifeCycleTraceId= "A1x7ecRv1YSTEAx";
+            String channel="DESKTOP_WEB";
+            pbbInfo.setConsentId(consentId);
+            pbbInfo.setLifeCycleTraceId(lifeCycleTraceId);
+            pbbInfo.setChannel(channel);
+            refund.setPbbInfo(pbbInfo);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);

@@ -27,15 +27,28 @@ namespace Moneris
             //completion.SetShipIndicator(ship_indicator); //optional
 
             //Optional
-            InstallmentInfo installmentInfo = new InstallmentInfo();
-            installmentInfo.SetPlanId("ae859ef1-eb91-b708-8b80-1dd481746401");
-            installmentInfo.SetPlanIdRef("0000000065");
-            installmentInfo.SetTacVersion("2");
+            // InstallmentInfo installmentInfo = new InstallmentInfo();
+            // installmentInfo.SetPlanId("ae859ef1-eb91-b708-8b80-1dd481746401");
+            // installmentInfo.SetPlanIdRef("0000000065");
+            // installmentInfo.SetTacVersion("2");
             //completion.SetInstallmentInfo(installmentInfo);
             
             SurchargeInfo surchargeInfo = new SurchargeInfo();
             surchargeInfo.SetSurchargeAmount("1.00");
             completion.SetSurchargeInfo(surchargeInfo);
+            
+            PBBInfo pbbInfo= new PBBInfo();
+            String consentId="1b5ee10a-5356-4a71-b2cf-874ab134661f";
+            String cryptogram="eyJraWQiOiJpZGlyZWN0LXRva2VuLWp3cy0wMDEiLCJhbGciOiJFUzI1NiJ9..0I37qRcPh0lzhTupEwGgkqE_6PD6Nv6UOe37lUlStg0oH6ELp67BLHg8T8HzEwMWxVXk8qvISYvCu3XwNw_ADg";
+            String cryptogramExpiry= "2024-08-28T17:54:48.000Z";
+            String paymentMethod ="BANK_ACCOUNT_CHEQUING";
+            String channel="DESKTOP_WEB";
+            pbbInfo.setConsentId(consentId);
+            pbbInfo.setCryptogram(cryptogram);
+            pbbInfo.setCryptogramExpiry(cryptogramExpiry);
+            pbbInfo.setPaymentMethod(paymentMethod);
+            pbbInfo.setChannel(channel);
+            completion.setPbbInfo(pbbInfo);
 
             HttpsPostRequest mpgReq = new HttpsPostRequest();
             mpgReq.SetProcCountryCode(processing_country_code);
